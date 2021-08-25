@@ -264,7 +264,6 @@ namespace UImGui
 
 		private void Reset()
 		{
-			_camera = Camera.main;
 			_initialConfiguration.SetDefaults();
 		}
 
