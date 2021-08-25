@@ -119,11 +119,13 @@ namespace UImGui
 			if (_camera == null)
 			{
 				Fail(nameof(_camera));
+				return;
 			}
 
 			if (_renderFeature == null && RenderUtility.IsUsingURP())
 			{
 				Fail(nameof(_renderFeature));
+				return;
 			}
 
 			_renderCommandBuffer = RenderUtility.GetCommandBuffer(Constants.UImGuiCommandBuffer);
@@ -217,6 +219,9 @@ namespace UImGui
 
 		private void Update()
 		{
+			if(_camera == null)
+				return;
+			
 			UImGuiUtility.SetCurrentContext(_context);
 			ImGuiIOPtr io = ImGui.GetIO();
 
@@ -249,6 +254,12 @@ namespace UImGui
 			_renderCommandBuffer.Clear();
 			_renderer.RenderDrawLists(_renderCommandBuffer, ImGui.GetDrawData());
 			Constants.DrawListMarker.End();
+		}
+
+		public void SetCamera(Camera newCam)
+		{
+			_camera = newCam;
+			Reset();
 		}
 
 		private void Reset()
