@@ -23,8 +23,6 @@ namespace UImGui.Editor
 		private SerializedProperty _cursorShapes;
 		private readonly StringBuilder _messages = new StringBuilder();
 
-		private bool usingImPlot = true;
-
 		public override void OnInspectorGUI()
 		{
 			serializedObject.Update();
@@ -77,19 +75,13 @@ namespace UImGui.Editor
 			_shaders = serializedObject.FindProperty("_shaders");
 			_style = serializedObject.FindProperty("_style");
 			_cursorShapes = serializedObject.FindProperty("_cursorShapes");
-			
-#if UIMGUI_REMOVE_IMPLOT
-			usingImPlot = false;
-#endif
 		}
 
 		private void CheckRequirements()
 		{
 			var textImGui = $"ImGUI: {ImGui.GetVersion()}";
-			var textImPlot = $"ImPlot: { (usingImPlot ? "0.10 - 2021-07-09" : "disabled") }";
 
 			EditorGUILayout.LabelField(textImGui);
-			EditorGUILayout.LabelField(textImPlot);
 			EditorGUILayout.Space();
 
 			_messages.Clear();

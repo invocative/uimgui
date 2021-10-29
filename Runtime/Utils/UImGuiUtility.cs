@@ -27,9 +27,6 @@ namespace UImGui
 			return new Context
 			{
 				ImGuiContext = ImGui.CreateContext(),
-#if !UIMGUI_REMOVE_IMPLOT
-				ImPlotContext = ImPlotNET.ImPlot.CreateContext(),
-#endif
 				TextureManager = new TextureManager()
 			};
 		}
@@ -37,20 +34,12 @@ namespace UImGui
 		internal static void DestroyContext(Context context)
 		{
 			ImGui.DestroyContext(context.ImGuiContext);
-
-#if !UIMGUI_REMOVE_IMPLOT
-			ImPlotNET.ImPlot.DestroyContext(context.ImPlotContext);
-#endif
 		}
 
 		internal static void SetCurrentContext(Context context)
 		{
 			Context = context;
 			ImGui.SetCurrentContext(context?.ImGuiContext ?? IntPtr.Zero);
-
-#if !UIMGUI_REMOVE_IMPLOT
-			ImPlotNET.ImPlot.SetImGuiContext(context?.ImGuiContext ?? IntPtr.Zero);
-#endif
 		}
 	}
 }

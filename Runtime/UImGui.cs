@@ -4,8 +4,6 @@ using UImGui.Platform;
 using UImGui.Renderer;
 using UnityEngine;
 using UnityEngine.Rendering;
-#if HAS_HDRP
-#endif
 
 namespace UImGui
 {
