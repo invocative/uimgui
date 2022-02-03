@@ -127,16 +127,18 @@ namespace UImGui.Platform
 			}
 
 			_keyboard = keyboard;
+			
+			
 
 			// Map and store new keys by assigning io.KeyMap and setting value of array.
 			_mainKeys = new int[] {
 				// Letter keys mapped by display name to avoid being layout agnostic (used as shortcuts).
-				io.KeyMap[(int)ImGuiKey.A] = (int)((KeyControl)keyboard["#(a)"]).keyCode, // For text edit CTRL+A: select all.
-				io.KeyMap[(int)ImGuiKey.C] = (int)((KeyControl)keyboard["#(c)"]).keyCode, // For text edit CTRL+C: copy.
-				io.KeyMap[(int)ImGuiKey.V] = (int)((KeyControl)keyboard["#(v)"]).keyCode, // For text edit CTRL+V: paste.
-				io.KeyMap[(int)ImGuiKey.X] = (int)((KeyControl)keyboard["#(x)"]).keyCode, // For text edit CTRL+X: cut.
-				io.KeyMap[(int)ImGuiKey.Y] = (int)((KeyControl)keyboard["#(y)"]).keyCode, // For text edit CTRL+Y: redo.
-				io.KeyMap[(int)ImGuiKey.Z] = (int)((KeyControl)keyboard["#(z)"]).keyCode, // For text edit CTRL+Z: undo.
+				io.KeyMap[(int)ImGuiKey.A] = (int)Key.A, // For text edit CTRL+A: select all.
+				io.KeyMap[(int)ImGuiKey.C] = (int)Key.C, // For text edit CTRL+C: copy.
+				io.KeyMap[(int)ImGuiKey.V] = (int)Key.V, // For text edit CTRL+V: paste.
+				io.KeyMap[(int)ImGuiKey.X] = (int)Key.X, // For text edit CTRL+X: cut.
+				io.KeyMap[(int)ImGuiKey.Y] = (int)Key.Y, // For text edit CTRL+Y: redo.
+				io.KeyMap[(int)ImGuiKey.Z] = (int)Key.Z, // For text edit CTRL+Z: undo.
 
 				io.KeyMap[(int)ImGuiKey.Tab] = (int)Key.Tab,
 
