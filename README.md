@@ -1,15 +1,13 @@
 # UImGui
+
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/psydack/uimgui?style=flat-square)  
 
 UImGui (Unity ImGui) is an UPM package for the immediate mode GUI library using [ImGui.NET](https://github.com/mellinoe/ImGui.NET).
-This project is based on [RG.ImGui](https://github.com/realgamessoftware/dear-imgui-unity) project. 
+
+This a fork of [UImGui](https://github.com/psydack/uimgui), which that project is based on [RG.ImGui](https://github.com/realgamessoftware/dear-imgui-unity) project.
 This project use [FreeType](https://github.com/ocornut/imgui/tree/master/misc/freetype) as default the renderer.
 
-This is a fork of [UImGui](https://github.com/psydack/uimgui).
-
 **Using ImGui 1.84 WIP**
-
-----
 
 ## What is Dear ImGui?
 
@@ -17,33 +15,32 @@ This is a fork of [UImGui](https://github.com/psydack/uimgui).
 > 
 > Dear ImGui is designed to **enable fast iterations** and to **empower programmers** to create **content creation tools and visualization / debug tools** (as opposed to UI for the average end-user). It favors simplicity and productivity toward this goal, and lacks certain features normally found in more high-level libraries.
 
-
 ## Motivation
 
 To update (using ImGui.Net.dll) easier and often.
 
 ## Features
 
-| Feature                                     |         RG         |      UImGui        | 
-| ------------------------------------------- | ------------------ | ------------------ |
-| IL2CPP                                      | :x:                | :heavy_check_mark: |
-| Windows                                     | :heavy_check_mark: | :heavy_check_mark: |
-| Linux                                       | :heavy_check_mark: | :x: (Coming)       |
-| MacOS                                       | :heavy_check_mark: | :x:                |
-| Custom Assert                               | :heavy_check_mark: | :x:                |
-| Unity Input Manager                         | :heavy_check_mark: | :heavy_check_mark: |
-| Unity Input System                          | :heavy_check_mark: | :heavy_check_mark: |
-| Docking                                     | :x:                | :heavy_check_mark: |
-| RenderPipeline Built in                     | :heavy_check_mark: | :heavy_check_mark: |
-| RenderPipeline URP                          | :x:                | :heavy_check_mark: |
-| RenderPipeline HDRP                         | :x:                | :heavy_check_mark: |
-| Renderer Mesh                               | :heavy_check_mark: | :heavy_check_mark: |
-| Renderer Procedural                         |          ~         | :heavy_check_mark: |
-| FreeType                                    |          ~         | :heavy_check_mark: |
-| Image / Texture                             | :x:                | :heavy_check_mark: |
-| [ImPlot](https://github.com/epezent/implot) | :x:                |          ~         |
+| Feature                                     |         RG         |      UImGui                                    |
+| ------------------------------------------- | ------------------ | ---------------------------------------------- |
+| IL2CPP                                      | :x:                | :heavy_check_mark:                             |
+| Windows                                     | :heavy_check_mark: | :heavy_check_mark:                             |
+| Linux                                       | :heavy_check_mark: | :heavy_check_mark: (Needs Freetype2 Installed) |
+| MacOS                                       | :heavy_check_mark: | :x:                                            |
+| Custom Assert                               | :heavy_check_mark: | :x:                                            |
+| Unity Input Manager                         | :heavy_check_mark: | :heavy_check_mark:                             |
+| Unity Input System                          | :heavy_check_mark: | :heavy_check_mark:                             |
+| Docking                                     | :x:                | :heavy_check_mark:                             |
+| RenderPipeline Built in                     | :heavy_check_mark: | :heavy_check_mark:                             |
+| RenderPipeline URP                          | :x:                | :heavy_check_mark:                             |
+| RenderPipeline HDRP                         | :x:                | :heavy_check_mark:                             |
+| Renderer Mesh                               | :heavy_check_mark: | :heavy_check_mark:                             |
+| Renderer Procedural                         |          ~         | :heavy_check_mark:                             |
+| FreeType                                    |          ~         | :heavy_check_mark:                             |
+| Image / Texture                             | :x:                | :heavy_check_mark:                             |
 
 ## Usage
+
 1. [Add package](https://docs.unity3d.com/Manual/upm-ui-giturl.html) from git URL: `https://github.com/Voltstro-Studios/uimgui.git`
 2. Add `UImGui` component to the scene and
 3. (Optional) Set `Platform Type` to `Input System` if you're using the new [input system](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/index.html) the `SampleDemoWindow` object on the scene the following properties:
@@ -51,18 +48,18 @@ To update (using ImGui.Net.dll) easier and often.
 
 ### Using URP
 
-- Add a `Render Im Gui Feature` render feature to the renderer asset. 
+- Add a `Render Im Gui Feature` render feature to the renderer asset.
 - Assign it to the `render feature` field of the DearImGui component.
 - Check this [issue](https://github.com/psydack/uimgui/issues/14) which I describe how to make it work step by step.
 
 ### Using HDRP
 
-- When using the ``High Definition Render Pipeline``, add a custom render pass and select "DearImGuiPass" injected after post processing.
+- When using the `High Definition Render Pipeline`, add a custom render pass and select "DearImGuiPass" injected after post processing.
 
 ## Examples
 
 You can subscribe to global layout or for a specific `UImGui` context:
-If choose to use global, don't to forget to set ``Do Global Events`` to ``true`` on ``UImGui`` instance.
+If choose to use global, don't to forget to set `Do Global Events` to `true` on `UImGui` instance.
 
 ### Basic
 
@@ -254,25 +251,12 @@ private unsafe int CustomCallback(ImGuiInputTextCallbackData* data)
 ```
 ![Image](https://user-images.githubusercontent.com/961971/120383734-a1ad4880-c2fb-11eb-87e1-398d5e7aac97.png)
 
-## Directives
+## Authors
 
-If you want to disable a feature, add the define to Project Settings > Player > Other Settings > Script define symbols > Apply > Restart Unity Editor.
-
-- ``UIMGUI_REMOVE_IMPLOT``: Don't load ImPlot lib and sources.  
-
-## Known issues
-
-Issue: ImPlot isn't work right. 
-
-# Credits
-
-Original repo https://github.com/realgamessoftware/dear-imgui-unity  
-Thanks to @lacrc and @airtonmotoki for encouraging me.  
-https://www.conventionalcommits.org/en/v1.0.0/  
-https://semver.org/   
-https://github.com/yeyushengfan258/Lyra-Cursors  
-https://github.com/lob/generate-changelog  
+- **realgamessoftware** - Initial work of [RG.ImGui](https://github.com/realgamessoftware/dear-imgui-unity) - [realgamessoftware](https://github.com/realgamessoftware)
+- **psydack** - Initial work - [psydack](https://github.com/psydack)
+- **Voltstro** - This fork's maintainer - [Voltstro](https://github.com/Voltstro)
 
 ## License
 
-Dear ImGui is licensed under the MIT License, see [LICENSE.txt](https://github.com/ocornut/imgui/blob/master/LICENSE.txt) for more information.
+This project is licensed under the MIT License - see the [LICENSE.md](/LICENSE.md) file for details.
