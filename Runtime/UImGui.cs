@@ -1,5 +1,6 @@
 using ImGuiNET;
 using UImGui.Assets;
+using UImGui.Events;
 using UImGui.Platform;
 using UImGui.Renderer;
 using UnityEngine;
@@ -60,6 +61,9 @@ namespace UImGui
 		};
 
 		[SerializeField]
+		private FontInitializerEvent _fontCustomInitializer = new FontInitializerEvent();
+
+		[SerializeField]
 		private FontAtlasConfigAsset _fontAtlasConfiguration = null;
 
 		[Header("Customization")]
@@ -74,6 +78,8 @@ namespace UImGui
 
 		[SerializeField]
 		private bool _doGlobalEvents = true; // Do global/default Layout event too.
+
+		private bool _isChangingCamera = false;
 
 		public CommandBuffer CommandBuffer => _renderCommandBuffer;
 
@@ -94,6 +100,24 @@ namespace UImGui
 			_initialConfiguration.UserData = userDataPtr;
 			ImGuiIOPtr io = ImGui.GetIO();
 			_initialConfiguration.ApplyTo(io);
+		}
+
+		public void SetCamera(Camera camera)
+		{
+			if (camera == null)
+			{
+				enabled = false;
+				throw new System.Exception($"Fail: {camera} is null.");
+			}
+
+			if(camera == _camera)
+			{
+				Debug.LogWarning($"Trying to change to same camera. Camera: {camera}", camera);
+				return;
+			}
+
+			_camera = camera;
+			_isChangingCamera = true;
 		}
 
 		private void Awake()
@@ -117,13 +141,11 @@ namespace UImGui
 			if (_camera == null)
 			{
 				Fail(nameof(_camera));
-				return;
 			}
 
 			if (_renderFeature == null && RenderUtility.IsUsingURP())
 			{
 				Fail(nameof(_renderFeature));
-				return;
 			}
 
 			_renderCommandBuffer = RenderUtility.GetCommandBuffer(Constants.UImGuiCommandBuffer);
@@ -147,7 +169,7 @@ namespace UImGui
 			_initialConfiguration.ApplyTo(io);
 			_style?.ApplyTo(ImGui.GetStyle());
 
-			_context.TextureManager.BuildFontAtlas(io, _fontAtlasConfiguration);
+			_context.TextureManager.BuildFontAtlas(io, _fontAtlasConfiguration, _fontCustomInitializer);
 			_context.TextureManager.Initialize(io);
 
 			IPlatform platform = PlatformUtility.Create(_platformType, _cursorShapes, _iniSettings);
@@ -217,9 +239,6 @@ namespace UImGui
 
 		private void Update()
 		{
-			if(_camera == null)
-				return;
-			
 			UImGuiUtility.SetCurrentContext(_context);
 			ImGuiIOPtr io = ImGui.GetIO();
 
@@ -249,17 +268,12 @@ namespace UImGui
 			_renderCommandBuffer.Clear();
 			_renderer.RenderDrawLists(_renderCommandBuffer, ImGui.GetDrawData());
 			Constants.DrawListMarker.End();
-		}
 
-		public void SetCamera(Camera newCam)
-		{
-			_camera = newCam;
-			Reset();
-		}
-
-		private void Reset()
-		{
-			_initialConfiguration.SetDefaults();
+			if (_isChangingCamera)
+			{
+				_isChangingCamera = false;
+				Reload();
+			}
 		}
 
 		private void SetRenderer(IRenderer renderer, ImGuiIOPtr io)
