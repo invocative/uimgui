@@ -5,19 +5,15 @@
 UImGui (Unity ImGui) is an UPM package for the immediate mode GUI library using [ImGui.NET](https://github.com/mellinoe/ImGui.NET).
 
 This a fork of [UImGui](https://github.com/psydack/uimgui), which that project is based on [RG.ImGui](https://github.com/realgamessoftware/dear-imgui-unity) project.
-This project use [FreeType](https://github.com/ocornut/imgui/tree/master/misc/freetype) as default the renderer.
+This project use [FreeType](https://github.com/ocornut/imgui/tree/master/misc/freetype) as the default renderer.
 
-**Using ImGui 1.84 WIP**
+**Using ImGui 1.87**
 
 ## What is Dear ImGui?
 
 > Dear ImGui is a **bloat-free graphical user interface library for C++**. It outputs optimized vertex buffers that you can render anytime in your 3D-pipeline enabled application. It is fast, portable, renderer agnostic and self-contained (no external dependencies).
 > 
 > Dear ImGui is designed to **enable fast iterations** and to **empower programmers** to create **content creation tools and visualization / debug tools** (as opposed to UI for the average end-user). It favors simplicity and productivity toward this goal, and lacks certain features normally found in more high-level libraries.
-
-## Motivation
-
-To update (using ImGui.Net.dll) easier and often.
 
 ## Features
 
