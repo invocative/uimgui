@@ -4,7 +4,7 @@
 
 UImGui (Unity ImGui) is an UPM package for the immediate mode GUI library using [ImGui.NET](https://github.com/mellinoe/ImGui.NET).
 
-This a fork of [UImGui](https://github.com/psydack/uimgui), which that project is based on [RG.ImGui](https://github.com/realgamessoftware/dear-imgui-unity) project.
+This a fork of [UImGui](https://github.com/psydack/uimgui), which that project is based off [RG.ImGui](https://github.com/realgamessoftware/dear-imgui-unity).
 This project use [FreeType](https://github.com/ocornut/imgui/tree/master/misc/freetype) as the default renderer.
 
 **Using ImGui 1.87**
@@ -37,10 +37,11 @@ This project use [FreeType](https://github.com/ocornut/imgui/tree/master/misc/fr
 
 ## Usage
 
-1. [Add package](https://docs.unity3d.com/Manual/upm-ui-giturl.html) from git URL: `https://github.com/Voltstro-Studios/uimgui.git`
-2. Add `UImGui` component to the scene and
-3. (Optional) Set `Platform Type` to `Input System` if you're using the new [input system](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/index.html) the `SampleDemoWindow` object on the scene the following properties:
-4. You're ready. Look at the [Example section](#examples) for more usage samples.  
+1. Setup [UnityNuGet](https://github.com/xoofx/UnityNuGet/#unitynuget-).
+2. [Add package](https://docs.unity3d.com/Manual/upm-ui-giturl.html) from git URL: `https://github.com/Voltstro-Studios/uimgui.git`.
+3. Add `UImGui` component to the scene.
+4. (Optional) Set `Platform Type` to `Input System` if you're using the new [input system](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.0/manual/index.html).
+5. You're ready. Look at the [Example section](#examples) for more usage samples.  
 
 ### Using URP
 
@@ -52,12 +53,10 @@ This project use [FreeType](https://github.com/ocornut/imgui/tree/master/misc/fr
 
 When using the `High Definition Render Pipeline`:
 
-- Add a script called Custom Pass Volume anywhere on your scene;
-- Add "DearImGuiPass"
+- Add a script called Custom Pass Volume anywhere in your scene.
+- Add "DearImGuiPass".
 - Update Injection Point to before or after post processing.
-- Good to go.
-
-Any doubts [see this link](https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@7.1/manual/Custom-Pass.html)
+- You're good to go.
 
 ## Examples
 
