@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70792e8e7be06b54e87366f539f7222b, type: 3}
-  m_Name: DefaultCursorShape
+  m_Name: DefultCursors
   m_EditorClassIdentifier: 
   Arrow:
     Texture: {fileID: 2800000, guid: d62fc3ef6dc0ebc4f9a8244aba880d72, type: 3}
